@@ -3,17 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to biopython-tutorial-ja's documentation!
+.. image:: biopython.jpg
+
+Biopythonドキュメント翻訳
 =================================================
 
-Contents:
+.. note::
+
+   オリジナルは http://biopython.org/DIST/docs/tutorial/Tutorial.html にあります。
+
+目次:
 
 .. toctree::
    :maxdepth: 2
 
    chapter2
 
-Indices and tables
+インデックス
 ==================
 
 * :ref:`genindex`

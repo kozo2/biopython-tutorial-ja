@@ -45,3 +45,42 @@ Biopythonについて注意すべきことの一つは"同じことをする"方
 議論の余地はあるかもしれませんが、バイオインフォマティクスにおける中心課題は配列です。それ故、私達はBiopythonの配列を扱う機能で手短なイントロを始めたいと思います。それはSeqオブジェクトというもので3章でより詳しく議論します。
 
 .. Most of the time when we think about sequences we have in my mind a string of letters like ‘AGTACACTGGT’. You can create such Seq object with this sequence as follows - the “>>>” represents the Python prompt followed by what you would type in:
+
+配列について考える際、大概私達は‘AGTACACTGGT’のような文字列を思い浮かべると思います。そのようなSeqオブジェクトは以下のような ">>>" で表される Python プロンプトに続くタイプで作成できます。
+
+.. highlight:: python
+
+>>> from Bio.Seq import Seq
+>>> my_seq = Seq("AGTACACTGGT")
+>>> my_seq
+Seq('AGTACACTGGT', Alphabet())
+>>> print my_seq
+AGTACACTGGT
+>>> my_seq.alphabet
+Alphabet()
+
+.. What we have here is a sequence object with a generic alphabet - reflecting the fact we have not specified if this is a DNA or protein sequence (okay, a protein with a lot of Alanines, Glycines, Cysteines and Threonines!). We’ll talk more about alphabets in Chapter 3.
+
+私達がここで扱うものは一般的なアルファベットの配列オブジェクトです。これはDNAもしくはタンパク配列であるか否かを特定しないということです(アラニン、グリシン、システイン、そしてスレオニンが多いのはタンパクですよ!)。私達は3章でさらにアルファベットについて話します。
+
+.. In addition to having an alphabet, the Seq object differs from the Python string in the methods it supports. You can’t do this with a plain string:
+
+アルファベットを持つことに加えて、SeqオブジェクトはサポートしているメソッドにおいてPythonのstringとは異なっています。これらのメソッドはプレーンなstringで使うことはできません。
+
+.. highlight:: python
+
+>>> my_seq
+Seq('AGTACACTGGT', Alphabet())
+>>> my_seq.complement()
+Seq('TCATGTGACCA', Alphabet())
+>>> my_seq.reverse_complement()
+Seq('ACCAGTGTACT', Alphabet())
+
+.. The next most important class is the SeqRecord or Sequence Record. This holds a sequence (as a Seq object) with additional annotation including an identifier, name and description. The Bio.SeqIO module for reading and writing sequence file formats works with SeqRecord objects, which will be introduced below and covered in more detail by Chapter 5.
+
+次に重要なクラスはSeqRecord もしくは Sequence Record です。これらのクラスはID、名前、解説を含むアノテーションと共に配列を(Seq オブジェクトとして)保持します。配列ファイルフォーマットを読み書きするためのBio.SeqIO モジュールはSeqRecordオブジェクトと連動します。Bio.SeqIOモジュールは5章でさらに詳しく紹介します。
+
+.. This covers the basic features and uses of the Biopython sequence class. Now that you’ve got some idea of what it is like to interact with the Biopython libraries, it’s time to delve into the fun, fun world of dealing with biological file formats!
+
+Bio.SeqIOモジュールはBiopythonの配列クラスの基本的な機能と用途をカバーしています。いまやBiopythonのライブラリと情報をどのようにやりとりするか掴めたことでしょう。それではバイオロジカルなファイルフォーマットを扱う楽しい世界へと掘り下げていきましょう!
+
